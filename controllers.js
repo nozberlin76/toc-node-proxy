@@ -22,7 +22,14 @@ exports.getOrder = async function getOrder(req, res, next) {
     console.log('parameters');
     console.log(req.params);
 
-    let resource = `https://api.bigcommerce.com/stores/9x4ctn3ioy/v2/orders/${req.params.orderId}/shipments`;
+    let store;
+    if (req.params.env === 'dev') {
+        store = "9x4ctn3ioy";
+    } else {
+        store = "3xaaslonk2";
+    }
+
+    let resource = `https://api.bigcommerce.com/stores/${store}/v2/orders/${req.params.orderId}/shipments`;
         let init = {
             method: 'GET',
             headers: {
