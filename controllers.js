@@ -24,6 +24,7 @@ exports.getOrder = async function getOrder(req, res, next) {
             res.status(404).json({status: 'not found'});
             alreadyResponded = true;
         }
+        
     };
     const checkShipping = async (shipping) => {
         try {
