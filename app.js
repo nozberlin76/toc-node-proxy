@@ -24,14 +24,20 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
     next();
 });
 
+//app.use(cors());
 
 app.use('/feed', feedRoutes);
 // app.use('/.well-known', feedRoutes);
 
-app.listen(PORT);
+//app.listen(PORT);
+
+app.listen(PORT, () => {
+  console.info(`server started on port ${PORT}`);
+});
 
 // http.createServer(app).listen(80);
 // Create an HTTPS service identical to the HTTP service.
