@@ -24,7 +24,6 @@ exports.getOrder = async function getOrder(req, res, next) {
             res.status(404).json({status: 'not found'});
             alreadyResponded = true;
         }
-        
     };
     const checkShipping = async (shipping) => {
         try {
@@ -34,7 +33,13 @@ exports.getOrder = async function getOrder(req, res, next) {
                 alreadyResponded = true;
             } else {
                 const data = await shipping.json();
-                response.shipping_info = data;
+                response.shipping_info = [
+                    {
+                        shipping_method: data[0].shipping_method, 
+                        tracking_number: data[0].tracking_number, 
+                        tracking_carrier: data[0].tracking_carrier
+                    }
+                ];
             }
         } catch(e) {
             response.shipping_info = {status: 'not found'};
