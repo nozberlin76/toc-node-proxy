@@ -63,13 +63,13 @@ exports.getOrder = async function getOrder(req, res, next) {
     let store;    
     if (req.params.env === 'dev') {
         store = "9x4ctn3ioy";
-        init.headers = {
+	init.headers = {
             "Accept": 'application/json',
             "X-Auth-Token": "8jg43j8rstvheyzfjcsvd8adxh483kn"
         }
     } else {
         store = "3xaaslonk2";
-        init.headers = {
+	init.headers = {
             "Accept": 'application/json',
             "X-Auth-Token": "3snz4aqwlheh6zjmdaezg5fn7plbc4h"
         }
